@@ -21,5 +21,8 @@ DASHBOARD:
     - fertilité: histogramme
     - tableau des enjeux
 
-GENERATE REPORT
+GENERATE REPORT (bonus):
+  Rmarkdown
+    - bon sens
+    
     
