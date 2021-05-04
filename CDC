@@ -1,1 +1,6 @@
 Cahier des charges
+
+DASHBOARD (public sur site internet) + GENERATE REPORT (par exploitation)
+
+DASHBOARD:
+  
