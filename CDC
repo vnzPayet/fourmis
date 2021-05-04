@@ -24,5 +24,6 @@ DASHBOARD:
 GENERATE REPORT (bonus):
   Rmarkdown
     - bon sens
+    - "Prochain rdv" gantt (bonus)
     
     
