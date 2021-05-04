@@ -20,6 +20,7 @@ DASHBOARD:
     - texture: histogramme
     - fertilité: histogramme
     - tableau des enjeux
+    - bouton "Générer rapport"
 
 GENERATE REPORT (bonus):
   Rmarkdown
