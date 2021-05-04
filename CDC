@@ -1,0 +1,29 @@
+**Cahier des charges**
+
+DASHBOARD (public sur site internet) + GENERATE REPORT (par exploitation)
+
+DASHBOARD:
+  sidebarPanel:
+    - choix du site: selectInput(txtINNOVANTS + liste innovants + txtREFERENTS + liste référents)
+    - choix de la date: dateInput()
+    - assolement
+    - systèmes de culture: initial et innovant + nb d'années
+    - travail du sol
+    - productions animales
+    - recap de tous les sites (bonus)
+  main:
+    - type de système de culture : innovant ou référent
+    - carte des parcelles (surfaces shp + contours des parcelles + numéro des parcelles), fond de carte: satellite    LEAFLET   sélectionner l'exploitation sur la carte (bonus)
+    - tableau des cultures par année: csv to clean
+    - image du système de culture: existe déjà, à générer (bonus)
+    - météo du site: altitude, ensoleillement, gel, pluie ; + pictogrammes selon la météo
+    - texture: histogramme
+    - fertilité: histogramme
+    - tableau des enjeux
+
+GENERATE REPORT (bonus):
+  Rmarkdown
+    - bon sens
+    - "Prochain rdv" gantt (bonus)
+    
+    
