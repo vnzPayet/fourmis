@@ -1,6 +1,12 @@
-Cahier des charges
+**Cahier des charges**
 
 DASHBOARD (public sur site internet) + GENERATE REPORT (par exploitation)
 
 DASHBOARD:
-  
+  sidebarPanel:
+    - choix du site: selectInput (txtINNOVANTS + liste innovants + txtREFERENTS + liste référents)
+    - choix de la date: dateInput
+    - recap de tous les sites (bonus)
+  main:
+    - 
+    
