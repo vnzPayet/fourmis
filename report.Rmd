@@ -5,20 +5,18 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output: html_document
 params:
   dateVar: NA
-  exploitVar: NA
-  parcelleVar: NA
+  siteVar: NA
 ---
 
 # Parcelle choisie
 ## Caractéristiques :
 
-Nom de la parcelle choisie : `params$parcelleVar`
-Site correspondant : `params$exploitVar`
+Nom du site choisi : `params$siteVar`
 
 ```{r}
 # The `params` object is available in the document.
 params$dateVar
-params$exploitVar
+params$siteVar
 ```
 
 normalement ça marche 

@@ -17,11 +17,11 @@ shinyUI(fluidPage(
   titlePanel("DESCInn \n Développement et Etude de Systèmes de Culture Innovants"), # title
   sidebarLayout(
     sidebarPanel(
-      selectInput(inputId = "exploitation", 
-                  label = "Sélectionner l'exploitation :", 
+      selectInput(inputId = "site", 
+                  label = "Sélectionner le site :", 
                   selected = 1,
-                  choices = list(`Exploitations innovantes` = list("exp_innov"),
-                                 `Exploitations référentes` = list("exp_ref")
+                  choices = list(`Exploitations innovantes` = list("site_innov"),
+                                 `Exploitations référentes` = list("site_ref")
                   )
       ),
       dateInput(inputId = "date", 

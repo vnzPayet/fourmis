@@ -18,17 +18,16 @@ shinyServer(function(input, output) {
     
     # vraies variables a decommenter:
     #dateVar <- input$date
-    #parcelleVar <- input$parcelle
-    #exploitVar <- input$exploitation
+    #siteVar <- input$exploitation
     
     # variables pour le test
     dateVar <- 2018
     parcelleVar <- "Le Grand Domaine"
-    exploitVar <- "03S"
+    siteVarVar <- "03S"
 
     output$type <- renderText(
-        #"Type de l'exploitation :"
-        input$exploitation
+        #"Type de du site :"
+        input$site
         
     )
     
@@ -64,7 +63,7 @@ shinyServer(function(input, output) {
         
     output$cultures <- renderTable(
         #rend une table des cultures. A mettre a jour en fonction du tableau
-        document[(document$Site==exploitVar),assolement]
+        document[(document$Site==siteVar),assolement]
         
     )
         
@@ -96,7 +95,7 @@ shinyServer(function(input, output) {
             file.copy("report.Rmd", tempReport, overwrite = TRUE)
             
             # Set up parameters to pass to Rmd document
-            params <- list(dateVar,exploitVar,parcelleVar)
+            params <- list(dateVar,siteVar)
             
             # Knit the document, passing in the `params` list, and eval it in a
             # child of the global environment (this isolates the code in the document
