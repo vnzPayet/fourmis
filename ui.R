@@ -52,18 +52,24 @@ shinyUI(fluidPage(
                           ),
                  tabPanel("Meteo", 
                             fluidRow(
+                              tableOutput(outputId = "météo"),
                               # A column is defined necessarily
                               # with its argument "width"
-                              column(width = 4, "altitude",
+                              #textOutput(outputId = "altitude"),
+                              column(width = 3, "Altitude max (m)", textOutput(outputId = "altitude")
                               ),
-                              column(width = 4, "ensoleillement",
+                              #textOutput(outputId = "ensoleillement"),
+                              column(width = 3, "ensoleillement (h/jour)", textOutput(outputId = "ensoleillement")
                               ),
-                              column(width = 4, "gel",
+                              #textOutput(outputId = "gel"),
+                              column(width = 3, "gel (j/an)", textOutput(outputId = "gel")
                               ),
-                              column(width = 4, "pluie",
+                              #textOutput(outputId = "pluie")
+                              column(width = 3, "pluie (mm/an)", textOutput(outputId = "pluie"),
+                                     #column(width = 3, "site")
                               )
                             )
-                          )
+                 )
       ),
       downloadButton("report", "Generer le recap !")
     )
