@@ -27,7 +27,7 @@ shinyServer(function(input, output) {
     output$assolement <- renderText(
         #"Assolement :"
         assolement <- paste("X",as.character(dateVar),sep=""),
-        document[document$assolement,(document$exploitation==exploitVar)]
+        document[assolement,(document$exploitation==exploitVar)]
     
     )
     
