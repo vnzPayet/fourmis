@@ -14,7 +14,7 @@ library(leaflet)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     
-    documentExcel <- read.csv2("fichier, remplacer le nom",)
+    document <- read.csv2("DATA/PARCELLES.csv")
     dateVar <- input$date
     exploitVar <- input$exploitation
 
@@ -26,7 +26,8 @@ shinyServer(function(input, output) {
     
     output$assolement <- renderText(
         #"Assolement :"
-        document[document$assolement,(document$annee==dateVar)&(document$exploitation==exploitVar)]
+        assolement <- paste("X",as.character(dateVar),sep=""),
+        document[document$assolement,(document$exploitation==exploitVar)]
     
     )
     
@@ -72,6 +73,30 @@ shinyServer(function(input, output) {
         
     )
     
-    output$enjeux <- 
+    output$enjeux <- renderTable(
+        
+    )
+    
+    output$report <- downloadHandler(
+        filename = "report.html",
+        content = function(file) {
+            # Copy the report file to a temporary directory before processing it, in
+            # case we don't have write permissions to the current working dir (which
+            # can happen when deployed).
+            tempReport <- file.path(tempdir(), "report.Rmd")
+            file.copy("report.Rmd", tempReport, overwrite = TRUE)
+            
+            # Set up parameters to pass to Rmd document
+            params <- list(dateVar)
+            
+            # Knit the document, passing in the `params` list, and eval it in a
+            # child of the global environment (this isolates the code in the document
+            # from the code in this app).
+            rmarkdown::render(tempReport, output_file = file,
+                              params = params,
+                              envir = new.env(parent = globalenv())
+            )
+        }
+    )
 
 })

@@ -1,0 +1,21 @@
+---
+title: "rapport test"
+author: "L. Doucelin"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+params:
+  dateVar: NA
+---
+
+# Ceci est un test de rapport pour voir si ça marche
+
+```{r}
+# The `params` object is available in the document.
+params$dateVar
+```
+
+test blabla
+
+```{r}
+
+```
