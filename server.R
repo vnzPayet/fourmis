@@ -14,21 +14,20 @@ library(leaflet)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     
-    document <- read.csv2("DATA/PARCELLES.csv")
+    document <- read.csv2("PARCELLES.csv")
     
     # vraies variables a decommenter:
-    #dateVar <- input$date
-    #siteVar <- input$exploitation
+    #dateVar <- as.integer(input$date)
+    #siteVar <- input$site
     
     # variables pour le test
-    dateVar <- 2018
-    parcelleVar <- "Le Grand Domaine"
-    siteVarVar <- "03S"
+    dateVar <- as.integer(2018)
+    siteVar <- "03S"
 
     output$type <- renderText(
         #"Type de du site :"
         input$site
-        
+        document[(document$Site==siteVar),Document$SousSite]
     )
     
     output$assolement <- renderText(
