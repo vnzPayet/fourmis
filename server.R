@@ -57,7 +57,7 @@ shinyServer(function(input, output) {
     )
         
     output$cultures <- renderTable(
-        #Rend une table de l'ensemble des cultures prÈsentes sur le site ‡ la date demandÈe 
+        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
         assolementVar <- paste("X",as.character(dateVar),sep=""),
         document[(document$Site==siteVar),assolementVar]
         
@@ -77,6 +77,30 @@ shinyServer(function(input, output) {
     
 #    output$enjeux <- renderTable(
 #    )
+    
+    ### PARTIE SUR LA M√âT√âO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE DE SITE EN VARIABLE
+    datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
+    output$m√©t√©o <- renderTable({datameteo})
+    ##on remplit la case de l'altitude
+    output$altitude <- renderText({
+        alti1 <- datameteo %>% filter(site=="63N")
+        alti1$altitude.max..m.   
+    })
+    ##on remplit la case de l'ensoleillement
+    output$ensoleillement <- renderText({
+        soleil1 <- datameteo %>% filter(site=="63N")
+        soleil1$ensoleillement..h.jour. 
+    })
+    ##on remplit la case du gel
+    output$gel <- renderText({
+        gel1 <- datameteo %>% filter(site=="63N")
+        gel1$gel..j.an.
+    })
+    ##on remplit la case de pluviom√©trie
+    output$pluie <- renderText({
+        pluie1 <- datameteo %>% filter(site=="63N")
+        pluie1$pluviometrie..mm.an.
+    })
     
     output$report <- downloadHandler(
         filename = "report.html",
