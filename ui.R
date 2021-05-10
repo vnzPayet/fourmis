@@ -32,10 +32,10 @@ shinyUI(fluidPage(
                 weekstart = 1, 
                 language = "fr"
       ),
-      textOutput(outputId = "assolement"),
-      textOutput(outputId = "sdc"),
-      textOutput(outputId = "travail"),
-      textOutput(outputId = "prod_a")
+      #textOutput(outputId = "assolement"),
+      #textOutput(outputId = "sdc"),
+      #textOutput(outputId = "travail"),
+      #textOutput(outputId = "prod_a")
     ),
     mainPanel(
       navbarPage("DASHBOARD", id="main",

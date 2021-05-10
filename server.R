@@ -14,7 +14,9 @@ library(leaflet)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     
-    document <- read.csv2("PARCELLES.csv")
+    document <- read.csv2("PARCELLES.csv", 
+                          header=TRUE, dec=".", sep=";", 
+                          skip=7)
     
     # vraies variables a decommenter:
     #dateVar <- as.integer(input$date)
@@ -26,32 +28,31 @@ shinyServer(function(input, output) {
 
     output$type <- renderText(
         #"Type de du site :"
-        input$site
-        document[(document$Site==siteVar),Document$SousSite]
+        typeVar <- as.character(document[(document$Site==siteVar),document$SousSite][1,1])
     )
     
     output$assolement <- renderText(
         #"Assolement :"
-        assolement <- paste("X",as.character(dateVar),sep=""),
-        document[(document$NomParcelle==parcelleVar),assolement]
+        assolementVar <- paste("X",as.character(dateVar),sep="")
+        #document[(document$Site==siteVar),assolementVar]
     
     )
     
     output$sdc <- renderText(
         #"sdc :"
-        document[(document$NomParcelle==parcelleVar),document$scd]
+        #document[(document$NomParcelle==parcelleVar),document$scd]
         
     )
     
     output$travail <- renderText(
         #"travail :"
-        document[(document$NomParcelle==parcelleVar),document$travail]
+        #document[(document$NomParcelle==parcelleVar),document$travail]
         
     )
     
     output$prod_a <- renderText(
         #"Production :"
-        document[(document$NomParcelle==parcelleVar),document$prod_a]
+        #document[(document$NomParcelle==parcelleVar),document$prod_a]
         
     )
     
@@ -61,15 +62,16 @@ shinyServer(function(input, output) {
     )
         
     output$cultures <- renderTable(
-        #rend une table des cultures. A mettre a jour en fonction du tableau
-        document[(document$Site==siteVar),assolement]
+        #Rend une table de l'ensemble des cultures présentes sur le site à la date demandée 
+        assolementVar <- paste("X",as.character(dateVar),sep="")
+        document[(document$Site==siteVar),assolementVar]
         
     )
         
     output$image <- renderImage(
-        #necessite l'installation du package png !!!
-        image <- readPNG("nom de l'image, a voir si on peut en choisir 
-                         une specifique a l'exploit dans un dossier special?")
+        ##necessite l'installation du package png !!!
+        #image <- readPNG("nom de l'image, a voir si on peut en choisir 
+        #                 une specifique a l'exploit dans un dossier special?")
     )
     
     output$texture <- renderPlot(
