@@ -63,15 +63,15 @@ shinyServer(function(input, output) {
     )
         
     output$cultures <- renderTable(
-        #rend une table des cultures. A mettre à jour en fonction du tableau
+        #rend une table des cultures. A mettre a jour en fonction du tableau
         document[(document$Site==exploitVar),assolement]
         
     )
         
     output$image <- renderImage(
         #necessite l'installation du package png !!!
-        image <- readPNG("nom de l'image, à voir si on peut en choisir 
-                         une spécifique à l'exploit dans un dossier spécial?")
+        image <- readPNG("nom de l'image, a voir si on peut en choisir 
+                         une specifique a l'exploit dans un dossier special?")
     )
     
     output$texture <- renderPlot(
@@ -96,7 +96,7 @@ shinyServer(function(input, output) {
             file.copy("report.Rmd", tempReport, overwrite = TRUE)
             
             # Set up parameters to pass to Rmd document
-            params <- list(dateVar,exploitVar)
+            params <- list(dateVar,exploitVar,parcelleVar)
             
             # Knit the document, passing in the `params` list, and eval it in a
             # child of the global environment (this isolates the code in the document

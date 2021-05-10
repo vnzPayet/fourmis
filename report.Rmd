@@ -6,9 +6,14 @@ output: html_document
 params:
   dateVar: NA
   exploitVar: NA
+  parcelleVar: NA
 ---
 
-# Ceci est un test de rapport pour voir si ça marche
+# Parcelle choisie
+## Caractéristiques :
+
+Nom de la parcelle choisie : `params$parcelleVar`
+Site correspondant : `params$exploitVar`
 
 ```{r}
 # The `params` object is available in the document.
@@ -16,7 +21,7 @@ params$dateVar
 params$exploitVar
 ```
 
-test blabla
+normalement ça marche 
 
 ```{r}
 
