@@ -78,7 +78,7 @@ shinyServer(function(input, output) {
 #    output$enjeux <- renderTable(
 #    )
     
-    ### PARTIE SUR LA MÉTÉO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE DE SITE EN VARIABLE
+    ### PARTIE SUR LA MÉTÉO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE LE SITE EN VARIABLE
     datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
     output$météo <- renderTable({datameteo})
     ##on remplit la case de l'altitude
