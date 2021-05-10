@@ -11,50 +11,45 @@ library(shiny)
 library(png)
 library(leaflet)
 
-# Define server logic required to draw a histogram
+
 shinyServer(function(input, output) {
     
-    document <- read.csv2("PARCELLES.csv", 
-                          header=TRUE, dec=".", sep=";", 
-                          skip=7)
+    document <- read.csv2("PARCELLES.csv",header=TRUE, dec=".", sep=";", 
+                          skip=7, encoding = "UTF-8")
     
     # vraies variables a decommenter:
-    #dateVar <- as.integer(input$date)
-    #siteVar <- input$site
+    dateVar <- as.integer(input$date)
+    siteVar <- input$site
     
     # variables pour le test
-    dateVar <- as.integer(2018)
-    siteVar <- "03S"
+    #dateVar <- as.integer(2018)
+    #siteVar <- "03S"
 
-    output$type <- renderText(
-        #"Type de du site :"
-        typeVar <- as.character(document[(document$Site==siteVar),document$SousSite][1,1])
-    )
+#    output$type <- renderText(
+#        #"Type de du site :"
+#        typeVar <- as.character(document[(document$Site==siteVar),document$SousSite][1,1])
+#    )
     
-    output$assolement <- renderText(
-        #"Assolement :"
-        assolementVar <- paste("X",as.character(dateVar),sep="")
-        #document[(document$Site==siteVar),assolementVar]
+#    output$assolement <- renderText(
+#        #"Assolement :"
+#        assolementVar <- paste("X",as.character(dateVar),sep="")
+#        #document[(document$Site==siteVar),assolementVar]
+#    )
     
-    )
+#    output$sdc <- renderText(
+#        #"sdc :"
+#        #document[(document$Site==siteVar),document$scd]
+#    )
     
-    output$sdc <- renderText(
-        #"sdc :"
-        #document[(document$NomParcelle==parcelleVar),document$scd]
-        
-    )
+#    output$travail <- renderText(
+#        #"travail :"
+#        #document[(document$Site==siteVar),document$travail]
+#    )
     
-    output$travail <- renderText(
-        #"travail :"
-        #document[(document$NomParcelle==parcelleVar),document$travail]
-        
-    )
-    
-    output$prod_a <- renderText(
-        #"Production :"
-        #document[(document$NomParcelle==parcelleVar),document$prod_a]
-        
-    )
+#    output$prod_a <- renderText(
+#        #"Production :"
+#        #document[(document$Site==siteVar),document$prod_a]
+#    )
     
     output$map <- renderLeaflet(
         #code de la carte Ã  mettre ici
@@ -63,28 +58,25 @@ shinyServer(function(input, output) {
         
     output$cultures <- renderTable(
         #Rend une table de l'ensemble des cultures présentes sur le site à la date demandée 
-        assolementVar <- paste("X",as.character(dateVar),sep="")
+        assolementVar <- paste("X",as.character(dateVar),sep=""),
         document[(document$Site==siteVar),assolementVar]
         
     )
         
-    output$image <- renderImage(
-        ##necessite l'installation du package png !!!
-        #image <- readPNG("nom de l'image, a voir si on peut en choisir 
-        #                 une specifique a l'exploit dans un dossier special?")
-    )
+#    output$image <- renderImage(
+#        ##necessite l'installation du package png !!!
+#        #image <- readPNG("nom de l'image, a voir si on peut en choisir 
+#        #                 une specifique a l'exploit dans un dossier special?")
+#    )
     
-    output$texture <- renderPlot(
-        
-    )
+#    output$texture <- renderPlot(
+#    )
     
-    output$fertilite <- renderPlot(
-        
-    )
+#    output$fertilite <- renderPlot(
+#    )
     
-    output$enjeux <- renderTable(
-        
-    )
+#    output$enjeux <- renderTable(
+#    )
     
     output$report <- downloadHandler(
         filename = "report.html",
