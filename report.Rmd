@@ -5,6 +5,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output: html_document
 params:
   dateVar: NA
+  exploitVar: NA
 ---
 
 # Ceci est un test de rapport pour voir si ça marche
@@ -12,6 +13,7 @@ params:
 ```{r}
 # The `params` object is available in the document.
 params$dateVar
+params$exploitVar
 ```
 
 test blabla

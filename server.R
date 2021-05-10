@@ -15,8 +15,16 @@ library(leaflet)
 shinyServer(function(input, output) {
     
     document <- read.csv2("DATA/PARCELLES.csv")
-    dateVar <- input$date
-    exploitVar <- input$exploitation
+    
+    # vraies variables a decommenter:
+    #dateVar <- input$date
+    #parcelleVar <- input$parcelle
+    #exploitVar <- input$exploitation
+    
+    # variables pour le test
+    dateVar <- 2018
+    parcelleVar <- "Le Grand Domaine"
+    exploitVar <- "03S"
 
     output$type <- renderText(
         #"Type de l'exploitation :"
@@ -27,25 +35,25 @@ shinyServer(function(input, output) {
     output$assolement <- renderText(
         #"Assolement :"
         assolement <- paste("X",as.character(dateVar),sep=""),
-        document[assolement,(document$exploitation==exploitVar)]
+        document[(document$NomParcelle==parcelleVar),assolement]
     
     )
     
     output$sdc <- renderText(
         #"sdc :"
-        document[document$scd,(document$annee==dateVar)&(document$exploitation==exploitVar)]
+        document[(document$NomParcelle==parcelleVar),document$scd]
         
     )
     
     output$travail <- renderText(
         #"travail :"
-        document[document$travail,(document$annee==dateVar)&(document$exploitation==exploitVar)]
+        document[(document$NomParcelle==parcelleVar),document$travail]
         
     )
     
     output$prod_a <- renderText(
         #"Production :"
-        document[document$prod_a,(document$annee==dateVar)&(document$exploitation==exploitVar)]
+        document[(document$NomParcelle==parcelleVar),document$prod_a]
         
     )
     
@@ -56,7 +64,8 @@ shinyServer(function(input, output) {
         
     output$cultures <- renderTable(
         #rend une table des cultures. A mettre à jour en fonction du tableau
-        document[document$culture,(document$annee==dateVar)&(document$exploitation==exploitVar)]
+        document[(document$Site==exploitVar),assolement]
+        
     )
         
     output$image <- renderImage(
@@ -87,7 +96,7 @@ shinyServer(function(input, output) {
             file.copy("report.Rmd", tempReport, overwrite = TRUE)
             
             # Set up parameters to pass to Rmd document
-            params <- list(dateVar)
+            params <- list(dateVar,exploitVar)
             
             # Knit the document, passing in the `params` list, and eval it in a
             # child of the global environment (this isolates the code in the document
