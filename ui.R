@@ -8,11 +8,12 @@
 #
 
 library(shiny)
+library(png)
 library(leaflet)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-
+  
   titlePanel("DESCInn \n Développement et Etude de Systèmes de Culture Innovants"), # title
   sidebarLayout(
     sidebarPanel(
@@ -21,7 +22,7 @@ shinyUI(fluidPage(
                   selected = 1,
                   choices = list(`Exploitations innovantes` = list("exp_innov"),
                                  `Exploitations référentes` = list("exp_ref")
-                                 )
+                  )
       ),
       dateInput(inputId = "date", 
                 label = "Sélectionner la date :", 
@@ -36,28 +37,35 @@ shinyUI(fluidPage(
       textOutput(outputId = "travail"),
       textOutput(outputId = "prod_a")
     ),
-    
     mainPanel(
-      textOutput(outputId = "type"),
-      leafletOutput("map", height=1000),
-      tableOutput(outputId = "cultures"),
-      imageOutput("image"),
-      fluidRow(
-        # A column is defined necessarily
-        # with its argument "width"
-        column(width = 4, "altitude",
-               ),
-        column(width = 4, "ensoleillement",
-               ),
-        column(width = 4, "gel",
-               ),
-        column(width = 4, "pluie",
-               )
+      navbarPage("DASHBOARD", id="main",
+                 tabPanel("Donnees", 
+                          textOutput(outputId = "type"),
+                          tableOutput(outputId = "cultures"),
+                          imageOutput("image"),
+                          plotOutput("texture"),
+                          plotOutput("fertilite"),
+                          tableOutput(outputId = "enjeux")
+                          ),
+                 tabPanel("Carte", 
+                          leafletOutput("map", height=1000)
+                          ),
+                 tabPanel("Meteo", 
+                            fluidRow(
+                              # A column is defined necessarily
+                              # with its argument "width"
+                              column(width = 4, "altitude",
+                              ),
+                              column(width = 4, "ensoleillement",
+                              ),
+                              column(width = 4, "gel",
+                              ),
+                              column(width = 4, "pluie",
+                              )
+                            )
+                          )
       ),
-      plotOutput("texture"),
-      plotOutput("fertilite"),
-      tableOutput(outputId = "enjeux"),
-      downloadButton("report", "Générer le récap !")
+      downloadButton("report", "Generer le recap !")
     )
   )
     
