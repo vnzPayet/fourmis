@@ -41,6 +41,7 @@ shinyUI(fluidPage(
                   value = 2020,
                   step = 1
                   ),
+      
 #      dateInput(inputId = "date", 
 #                label = "Sélectionner la date :", 
 #                value = Sys.Date(),
@@ -49,7 +50,7 @@ shinyUI(fluidPage(
 #                weekstart = 1, 
 #                language = "fr"
 #      ),
-      textOutput(outputId = "assolement"),
+      #textOutput(outputId = "assolement"),
       #textOutput(outputId = "sdc"),
       #textOutput(outputId = "travail"),
       #textOutput(outputId = "prod_a")

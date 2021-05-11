@@ -35,12 +35,11 @@ shinyServer(function(input, output) {
 #        typeVar <- as.character(document[(document$Site==siteVar),document$SousSite][1,1])
 #    )
     
-    output$assolement <- renderText(
+#    output$assolement <- renderText(
 #        #"Assolement :"
 #        assolementVar <- paste("X",as.character(dateVar),sep="")
 #        #document[(document$Site==siteVar),assolementVar]
-        as.character(siteVar)
-    )
+#    )
     
 #    output$sdc <- renderText(
 #        #"sdc :"
@@ -74,10 +73,11 @@ shinyServer(function(input, output) {
        
             
 #    output$cultures <- renderTable(
-#        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
-#        assolementVar <- paste("X",as.character(dateVar),sep=""),
-#        document[(document$Site==siteVar),assolementVar]
-#    )
+ #       #Rend une table de l'ensemble des cultures presentes sur le site a la date demandee 
+  #      assolementVar <- paste("annee_",as.character(input$date),sep=""),
+   #     
+    #    document[(document$Site==siteVar),assolementVar]
+    #)
         
 #    output$cultures <- renderTable(
 #        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
