@@ -18,8 +18,8 @@ library(dplyr)
 
 shinyServer(function(input, output) {
     
-#    document <- read.csv2("PARCELLES.csv",header=TRUE, dec=".", sep=";", 
-#                          skip=7, encoding = "UTF-8")
+    document <- read.csv2("DATA/PARCELLES2.csv", header=TRUE, dec=".", sep=";", 
+                         encoding = "latin1")
     
     # vraies variables a decommenter:
     dateVar <- reactive(input$date)
@@ -101,12 +101,14 @@ shinyServer(function(input, output) {
     
     ### PARTIE SUR LA MÉTÉO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE LE SITE EN VARIABLE
     datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
-    output$meteo <- renderTable({datameteo})
+    #output$meteo <- renderTable({datameteo})
+    output$altitude <- renderText({input$site})
+    
     ##on remplit la case de l'altitude
-    output$altitude <- renderText({
-        alti1 <- datameteo %>% filter(Site=="63N")
-        alti1$altitude.max..m.   
-    })
+    #output$altitude <- renderText({
+    #    alti1 <- datameteo %>% filter(Site=="63N")
+     #   alti1$altitude.max..m.   
+   # })
     ##on remplit la case de l'ensoleillement
     output$ensoleillement <- renderText({
         soleil1 <- datameteo %>% filter(Site=="63N")
