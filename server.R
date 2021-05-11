@@ -18,7 +18,7 @@ library(dplyr)
 
 shinyServer(function(input, output) {
     
-    document <- read.csv2("DATA/PARCELLES-testServer.csv", header=TRUE, dec=",", sep=";", 
+    document <- read.csv2("DATA/PARCELLES2.csv", header=TRUE, dec=",", sep=";", 
                          encoding = "latin1")
     
     # vraies variables a decommenter:
@@ -32,7 +32,7 @@ shinyServer(function(input, output) {
 
 #    output$type <- renderText(
 #        #"Type de du site :"
-#        typeVar <- as.character(document[(document$Site==siteVar),document$SousSite][1,1])
+#        typeVar <- as.character(document[(document$Site==siteVar()),document$SousSite][1,1])
 #    )
     
 #    output$assolement <- renderText(
@@ -57,36 +57,29 @@ shinyServer(function(input, output) {
 #    )
    
     
-#THE carte
-output$map <- renderLeaflet({
-  
-  file <- paste("DATA/KML/", input$site, ".kml", sep = "") #création chemin d'accès
-  shp <- rgdal::readOGR(file) #import
-  
-  leaflet(shp) %>%
-    addTiles() %>%
-      addPolygons(stroke = T,
-                  color = "red", weight = 2, smoothFactor = 0.5,
-                  opacity = 1.0, fillOpacity = 0.2,
-                  fillColor = "red", 
-                  highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
-                  label = ~as.character(shp$Name)
-      )
-})
+    #THE carte
+    output$map <- renderLeaflet({
+      
+      file <- paste("DATA/KML/", input$site, ".kml", sep = "") #création chemin d'accès
+      shp <- rgdal::readOGR(file) #import
+      
+      leaflet(shp) %>%
+        addTiles() %>%
+          addPolygons(stroke = T,
+                      color = "red", weight = 2, smoothFactor = 0.5,
+                      opacity = 1.0, fillOpacity = 0.2,
+                      fillColor = "red", 
+                      highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+                      label = ~as.character(shp$Name)
+          )
+    })
 
        
-            
-#    output$cultures <- renderTable(
- #       #Rend une table de l'ensemble des cultures presentes sur le site a la date demandee 
-  #      assolementVar <- paste("annee_",as.character(input$date),sep=""),
-   #     
-    #    document[(document$Site==siteVar),assolementVar]
-    #)
-        
 #    output$cultures <- renderTable(
 #        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
-#        assolementVar <- paste("X",as.character(dateVar),sep=""),
-#        document[(document$Site==siteVar),assolementVar]
+#        anneeVar <- paste("X",as.character(input$date),sep=""),
+#        anneeVar <- as.character(anneeVar)
+#        document[anneeVar]
 #        
 #    )
         
