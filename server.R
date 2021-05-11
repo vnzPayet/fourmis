@@ -18,12 +18,13 @@ library(dplyr)
 
 shinyServer(function(input, output) {
     
-    document <- read.csv2("DATA/PARCELLES2.csv", header=TRUE, dec=".", sep=";", 
+    document <- read.csv2("DATA/PARCELLES-testServer.csv", header=TRUE, dec=",", sep=";", 
                          encoding = "latin1")
     
     # vraies variables a decommenter:
     dateVar <- reactive(input$date)
     siteVar <- reactive(input$site)
+    
     
     # variables pour le test
     #dateVar <- as.integer(2018)
@@ -34,11 +35,12 @@ shinyServer(function(input, output) {
 #        typeVar <- as.character(document[(document$Site==siteVar),document$SousSite][1,1])
 #    )
     
-#    output$assolement <- renderText(
+    output$assolement <- renderText(
 #        #"Assolement :"
 #        assolementVar <- paste("X",as.character(dateVar),sep="")
 #        #document[(document$Site==siteVar),assolementVar]
-#    )
+        as.character(siteVar)
+    )
     
 #    output$sdc <- renderText(
 #        #"sdc :"
