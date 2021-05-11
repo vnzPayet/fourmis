@@ -64,15 +64,15 @@ shinyUI(fluidPage(
                             fluidRow(
                               # A column is defined necessarily
                               # with its argument "width"
-                              column(width = 3, "Site", textOutput(outputId = "SITE")
+                              column(width = 1, "Site", textOutput(outputId = "SITE")
                               ),
                               column(width = 3, "Altitude max (m)", textOutput(outputId = "altitude")
                               ),
                               column(width = 3, "ensoleillement (h/jour)", textOutput(outputId = "ensoleillement")
                               ),
-                              column(width = 3, "gel (j/an)", textOutput(outputId = "gel")
+                              column(width = 2, "gel (j/an)", textOutput(outputId = "gel")
                               ),
-                              column(width = 3, "pluie (mm/an)", textOutput(outputId = "pluie"),
+                              column(width = 10, "pluie (mm/an)", textOutput(outputId = "pluie"),
                               tableOutput(outputId = "meteo")
                               )
                             )

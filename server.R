@@ -102,29 +102,43 @@ shinyServer(function(input, output) {
     ### PARTIE SUR LA MÉTÉO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE LE SITE EN VARIABLE
     datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
    
-    #output$altitude <- renderText({input$site})
+    #output$altitude <- renderText({
+    #  test1 <- input$site
+    #  paste(substr(test1,1,3))
+    #  })
     
     ##on remplit la case du site
-    output$SITE <- renderText({"63N"})
+    output$SITE <- renderText({
+      test1 <- input$site
+      paste(substr(test1,1,3))
+    })
   
     ##on remplit la case de l'altitude
     output$altitude <- renderText({
-        alti1 <- datameteo %>% filter(Site=="63N")
+        test1 <- input$site
+        test2 <- substr(test1,1,3)
+        alti1 <- datameteo %>% filter(Site==test2)
         alti1$altitude.max..m.   
     })
     ##on remplit la case de l'ensoleillement
     output$ensoleillement <- renderText({
-        soleil1 <- datameteo %>% filter(Site=="63N")
+        test1 <- input$site
+        test2 <- substr(test1,1,3)
+        soleil1 <- datameteo %>% filter(Site==test2)
         soleil1$ensoleillement..h.jour. 
     })
     ##on remplit la case du gel
     output$gel <- renderText({
-        gel1 <- datameteo %>% filter(Site=="63N")
+        test1 <- input$site
+        test2 <- substr(test1,1,3)
+        gel1 <- datameteo %>% filter(Site==test2)
         gel1$gel..j.an.
     })
     ##on remplit la case de pluviométrie
     output$pluie <- renderText({
-        pluie1 <- datameteo %>% filter(Site=="63N")
+        test1 <- input$site
+        test2 <- substr(test1,1,3)
+        pluie1 <- datameteo %>% filter(Site==test2)
         pluie1$pluviometrie..mm.an.
     })
     ##on affiche le tableau avec toutes les données météo
