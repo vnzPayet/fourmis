@@ -20,8 +20,18 @@ shinyUI(fluidPage(
       selectInput(inputId = "site", 
                   label = "Sélectionner le site :", 
                   selected = 1,
-                  choices = list(`Exploitations innovantes` = list("site_innov"),
-                                 `Exploitations référentes` = list("site_ref")
+                 choices = list(`Exploitations innovantes` = list("03N_CHAMIGNON",
+                                                                   "03S_DEVILLE",
+                                                                   "43E_BONNEVIALLE",
+                                                                   "43O_LARGER",
+                                                                   "63E_DUCROS",
+                                                                   "63N_CHAMBON",
+                                                                   "63S_MANLHIOT"),
+                                 `Exploitations référentes` = list("03S_BAYOT", 
+                                                                   "43E_BONNEVIALLE", 
+                                                                   "43O_CHOUVIER",
+                                                                   "63N_CROZET",
+                                                                   "63S_TOURETTE")
                   )
       ),
       dateInput(inputId = "date", 
