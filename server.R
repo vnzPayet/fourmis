@@ -30,16 +30,17 @@ shinyServer(function(input, output) {
     #dateVar <- as.integer(2018)
     #siteVar <- "03S"
 
-#    output$type <- renderText(
-#        #"Type de du site :"
-#        typeVar <- as.character(document[(document$Site==siteVar()),document$SousSite][1,1])
-#    )
+    output$type <- renderText(
+        typeVar <- as.character(document[(document$Site==str_sub(input$site,start=1,end=3)),2][1])
+    )
     
-#    output$assolement <- renderText(
-#        #"Assolement :"
-#        assolementVar <- paste("X",as.character(dateVar),sep="")
-#        #document[(document$Site==siteVar),assolementVar]
-#    )
+    output$assolement <- renderTable(
+      cultures <- document[(document$Site==str_sub(input$site,start=1,end=3))
+                           &(document$SousSite==as.character(document[(document$Site==str_sub(input$site,start=1,end=3)),2][1])),
+                           8:16]
+    )
+    
+    
     
 #    output$sdc <- renderText(
 #        #"sdc :"
@@ -56,6 +57,28 @@ shinyServer(function(input, output) {
 #        #document[(document$Site==siteVar),document$prod_a]
 #    )
    
+    output$cultures <- renderTable(
+      #Rend une table de l'ensemble des cultures presentes sur le site a la date demandee 
+      cultures <- document[(document$Site==str_sub(input$site,start=1,end=3))
+                           &(document$SousSite==as.character(document[(document$Site==str_sub(input$site,start=1,end=3)),2][1])),
+                           paste("X",as.character(input$date),sep = "")]
+        
+    )
+
+#    output$image <- renderImage(
+#        ##necessite l'installation du package png !!!
+#        #image <- readPNG("nom de l'image, a voir si on peut en choisir 
+#        #                 une specifique a l'exploit dans un dossier special?")
+#    )
+
+#    output$texture <- renderPlot(
+#    )
+
+#    output$fertilite <- renderPlot(
+#    )
+
+#    output$enjeux <- renderTable(
+#    )    
     
     #THE carte
     output$map <- renderLeaflet({
@@ -75,28 +98,7 @@ shinyServer(function(input, output) {
     })
 
        
-#    output$cultures <- renderTable(
-#        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
-#        anneeVar <- paste("X",as.character(input$date),sep=""),
-#        anneeVar <- as.character(anneeVar)
-#        document[anneeVar]
-#        
-#    )
-        
-#    output$image <- renderImage(
-#        ##necessite l'installation du package png !!!
-#        #image <- readPNG("nom de l'image, a voir si on peut en choisir 
-#        #                 une specifique a l'exploit dans un dossier special?")
-#    )
-    
-#    output$texture <- renderPlot(
-#    )
-    
-#    output$fertilite <- renderPlot(
-#    )
-    
-#    output$enjeux <- renderTable(
-#    )
+
     
     ### PARTIE SUR LA MÉTÉO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE LE SITE EN VARIABLE
     datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")

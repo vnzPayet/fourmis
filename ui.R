@@ -32,8 +32,8 @@ shinyUI(fluidPage(
                                                                    "43O_ref_CHOUVIER",
                                                                    "63N_ref_CROZET",
                                                                    "63S_ref_TOURETTE")
-                  )
-      ),
+                                 )
+                  ),
       sliderInput(inputId = "date",
                   label = "selectionner une date",
                   min = 2017,
@@ -57,12 +57,19 @@ shinyUI(fluidPage(
     ),
     mainPanel(
       navbarPage("DASHBOARD", id="main",
-                 tabPanel("Donnees", 
+                 tabPanel("Donnees",
+                          "Type de l'exploitation :",
                           textOutput(outputId = "type"),
+                          "Liste des cultures sur le site pour cette annee :",
                           tableOutput(outputId = "cultures"),
+                          "Assolement actuel :",
+                          tableOutput(outputId = "assolement"),
                           imageOutput("image"),
+                          "Texture du sol :",
                           plotOutput("texture"),
+                          "Fertilite du sol",
                           plotOutput("fertilite"),
+                          "Enjeux autour du site :",
                           tableOutput(outputId = "enjeux")
                           ),
                  tabPanel("Carte", 
