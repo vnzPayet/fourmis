@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>63E_inn_DUCROS</name>
+    <Style id="poly-FF0000-3000-25-normal">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>3</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>190000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-FF0000-3000-25-highlight">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>190000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-FF0000-3000-25">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FF0000-3000-25-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FF0000-3000-25-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-FF0000-801-0-normal">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>0.801</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>000000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-FF0000-801-0-highlight">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>1.2015</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>000000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-FF0000-801-0">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FF0000-801-0-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FF0000-801-0-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Parc à mouton
+</name>
+      <description><![CDATA[description: Parc Ã moutons<br>measure: 34556.51 m^2<br>type: Polygon]]></description>
+      <styleUrl>#poly-FF0000-3000-25</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Parc Ã moutons</value>
+        </Data>
+        <Data name="measure">
+          <value>34556.51 m^2</value>
+        </Data>
+        <Data name="type">
+          <value>Polygon</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              3.620296,45.731453,0
+              3.618305,45.73155,0
+              3.618327,45.73114,0
+              3.618295,45.730599,0
+              3.61826,45.730238,0
+              3.618252,45.730114,0
+              3.618313,45.729833,0
+              3.618372,45.729624,0
+              3.6185865,45.7294591,0
+              3.6186518,45.72946,0
+              3.6194387,45.7295081,0
+              3.6198483,45.7295377,0
+              3.6200571,45.7295553,0
+              3.620172,45.7295692,0
+              3.6201862,45.7297059,0
+              3.620187,45.7298687,0
+              3.620194,45.7302,0
+              3.620234,45.73032,0
+              3.620312,45.730427,0
+              3.620432,45.730691,0
+              3.620438,45.73082,0
+              3.620357,45.7312,0
+              3.620296,45.731453,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Les Cartes
+</name>
+      <description><![CDATA[description: Les Cartes<br>measure: 53564.3 m^2<br>type: Polygon]]></description>
+      <styleUrl>#poly-FF0000-3000-25</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Les Cartes</value>
+        </Data>
+        <Data name="measure">
+          <value>53564.3 m^2</value>
+        </Data>
+        <Data name="type">
+          <value>Polygon</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              3.620273,45.729554,0
+              3.62089,45.729595,0
+              3.621464,45.729633,0
+              3.621959,45.7296725,0
+              3.6222475,45.7296911,0
+              3.622528,45.729704,0
+              3.622928,45.729736,0
+              3.623412,45.729764,0
+              3.6237823,45.7297956,0
+              3.6238454,45.7298025,0
+              3.623871,45.7298225,0
+              3.6238561,45.7298537,0
+              3.623766,45.729943,0
+              3.623605,45.730105,0
+              3.623416,45.730276,0
+              3.623246,45.730422,0
+              3.623179,45.730479,0
+              3.623066,45.730564,0
+              3.622785,45.730768,0
+              3.622388,45.731074,0
+              3.6220389,45.7313521,0
+              3.621759,45.73159,0
+              3.621515,45.7318022,0
+              3.621386,45.731914,0
+              3.621265,45.732093,0
+              3.621232,45.732204,0
+              3.62121,45.732336,0
+              3.621195,45.732396,0
+              3.621132,45.732509,0
+              3.621047,45.732609,0
+              3.620937,45.732681,0
+              3.620847,45.732732,0
+              3.620692,45.732804,0
+              3.6205587,45.7328546,0
+              3.620342,45.732934,0
+              3.6202449,45.7329672,0
+              3.6202067,45.7329724,0
+              3.6201892,45.7329495,0
+              3.6201851,45.7329023,0
+              3.6201855,45.7328176,0
+              3.6201738,45.7327263,0
+              3.6201644,45.7326026,0
+              3.6201829,45.7323729,0
+              3.6202313,45.7321796,0
+              3.6202768,45.7320073,0
+              3.6203089,45.7318613,0
+              3.6203394,45.7317518,0
+              3.620397,45.731496,0
+              3.620435,45.731287,0
+              3.6205034,45.7309543,0
+              3.6205405,45.7307653,0
+              3.6205154,45.7306465,0
+              3.620477,45.730554,0
+              3.620387,45.730388,0
+              3.620306,45.730231,0
+              3.620277,45.730139,0
+              3.620267,45.730081,0
+              3.620258,45.729831,0
+              3.620273,45.729554,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Brugière devant maison</name>
+      <description><![CDATA[description: BrugiÃ¨re devant maison<br>measure: 58016.43 m^2<br>type: Polygon]]></description>
+      <styleUrl>#poly-FF0000-3000-25</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>BrugiÃ¨re devant maison</value>
+        </Data>
+        <Data name="measure">
+          <value>58016.43 m^2</value>
+        </Data>
+        <Data name="type">
+          <value>Polygon</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              3.615682,45.732524,0
+              3.615135,45.732368,0
+              3.614867,45.73231,0
+              3.614499,45.73223,0
+              3.614287,45.732177,0
+              3.614038,45.732129,0
+              3.613858,45.732099,0
+              3.613729,45.732082,0
+              3.614027,45.73175,0
+              3.614301,45.731462,0
+              3.614585,45.731163,0
+              3.614765,45.730917,0
+              3.614894,45.730635,0
+              3.614966,45.73044,0
+              3.615261,45.730352,0
+              3.615851,45.730185,0
+              3.616484,45.730017,0
+              3.617144,45.729837,0
+              3.617527,45.729738,0
+              3.617973,45.729607,0
+              3.618152,45.729556,0
+              3.618203,45.729603,0
+              3.61823,45.729631,0
+              3.618211,45.729719,0
+              3.618147,45.72988,0
+              3.618083,45.730088,0
+              3.618042,45.730219,0
+              3.617951,45.730372,0
+              3.617852,45.730573,0
+              3.617696,45.730816,0
+              3.617533,45.731043,0
+              3.617434,45.731187,0
+              3.617318,45.731325,0
+              3.617216,45.731445,0
+              3.617128,45.731548,0
+              3.616986,45.731719,0
+              3.616878,45.731852,0
+              3.61668,45.732024,0
+              3.616527,45.732127,0
+              3.616165,45.73229,0
+              3.615859,45.73243,0
+              3.615682,45.732524,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>La Bruyère
+</name>
+      <description><![CDATA[description: La BruyÃ¨re<br>measure: 49721.89 m^2<br>type: Polygon]]></description>
+      <styleUrl>#poly-FF0000-3000-25</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>La BruyÃ¨re</value>
+        </Data>
+        <Data name="measure">
+          <value>49721.89 m^2</value>
+        </Data>
+        <Data name="type">
+          <value>Polygon</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              3.616477,45.734101,0
+              3.616296,45.733805,0
+              3.616121,45.733511,0
+              3.615972,45.733278,0
+              3.615921,45.733197,0
+              3.615862,45.733097,0
+              3.615878,45.733071,0
+              3.616,45.733031,0
+              3.616168,45.732981,0
+              3.616382,45.732907,0
+              3.616597,45.732839,0
+              3.617126,45.732648,0
+              3.617407,45.732537,0
+              3.617738,45.732405,0
+              3.61837,45.732168,0
+              3.618631,45.732065,0
+              3.618791,45.732,0
+              3.619413,45.731791,0
+              3.619836,45.731658,0
+              3.620082,45.731572,0
+              3.620228,45.73156,0
+              3.620234,45.731584,0
+              3.620227,45.731641,0
+              3.620204,45.731763,0
+              3.620108,45.732167,0
+              3.620073,45.732339,0
+              3.620061,45.732486,0
+              3.620062,45.732664,0
+              3.620068,45.732817,0
+              3.620059,45.732943,0
+              3.620031,45.733042,0
+              3.619967,45.733099,0
+              3.619872,45.733154,0
+              3.619738,45.733215,0
+              3.619543,45.733316,0
+              3.618996,45.733601,0
+              3.616477,45.734101,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>La Garenne
+</name>
+      <description><![CDATA[description: La Garenne (sol)<br><br>measure: 21459.05 m^2<br>type: Polygon]]></description>
+      <styleUrl>#poly-FF0000-801-0</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>La Garenne (sol)
+</value>
+        </Data>
+        <Data name="measure">
+          <value>21459.05 m^2</value>
+        </Data>
+        <Data name="type">
+          <value>Polygon</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              3.6164747,45.734114,0
+              3.6164507,45.734142,0
+              3.6157997,45.734331,0
+              3.6154337,45.734445,0
+              3.6151847,45.734539,0
+              3.6149177,45.734483,0
+              3.6146577,45.734419,0
+              3.6137317,45.734211,0
+              3.6133227,45.734096,0
+              3.6132887,45.734041,0
+              3.6133447,45.733956,0
+              3.6134877,45.733736,0
+              3.6136237,45.733455,0
+              3.6136487,45.733473,0
+              3.6137187,45.733514,0
+              3.6139037,45.733638,0
+              3.6140137,45.733697,0
+              3.6152917,45.733389,0
+              3.6158667,45.733207,0
+              3.6158977,45.733199,0
+              3.6162387,45.733733,0
+              3.6164747,45.734114,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>
