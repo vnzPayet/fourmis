@@ -34,15 +34,22 @@ shinyUI(fluidPage(
                                                                    "63S_TOURETTE")
                   )
       ),
-      dateInput(inputId = "date", 
-                label = "Sélectionner la date :", 
-                value = Sys.Date(),
-                format = "dd/mm/yyyy", 
-                startview = "month", 
-                weekstart = 1, 
-                language = "fr"
-      ),
-      #textOutput(outputId = "assolement"),
+      sliderInput(inputId = "date",
+                  label = "selectionner une date",
+                  min = 2017,
+                  max = 2025,
+                  value = 2020,
+                  step = 1
+                  ),
+#      dateInput(inputId = "date", 
+#                label = "Sélectionner la date :", 
+#                value = Sys.Date(),
+#                format = "dd/mm/yyyy", 
+#                startview = "month", 
+#                weekstart = 1, 
+#                language = "fr"
+#      ),
+      textOutput(outputId = "assolement"),
       #textOutput(outputId = "sdc"),
       #textOutput(outputId = "travail"),
       #textOutput(outputId = "prod_a")
