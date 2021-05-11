@@ -13,6 +13,7 @@ library(leaflet)
 library(rgdal)
 library(stringr)
 library(rmapshaper)
+library(dplyr)
 
 
 shinyServer(function(input, output) {
@@ -98,22 +99,22 @@ shinyServer(function(input, output) {
     output$météo <- renderTable({datameteo})
     ##on remplit la case de l'altitude
     output$altitude <- renderText({
-        alti1 <- datameteo %>% filter(site=="63N")
+        alti1 <- datameteo %>% filter(Site=="63N")
         alti1$altitude.max..m.   
     })
     ##on remplit la case de l'ensoleillement
     output$ensoleillement <- renderText({
-        soleil1 <- datameteo %>% filter(site=="63N")
+        soleil1 <- datameteo %>% filter(Site=="63N")
         soleil1$ensoleillement..h.jour. 
     })
     ##on remplit la case du gel
     output$gel <- renderText({
-        gel1 <- datameteo %>% filter(site=="63N")
+        gel1 <- datameteo %>% filter(Site=="63N")
         gel1$gel..j.an.
     })
     ##on remplit la case de pluviométrie
     output$pluie <- renderText({
-        pluie1 <- datameteo %>% filter(site=="63N")
+        pluie1 <- datameteo %>% filter(Site=="63N")
         pluie1$pluviometrie..mm.an.
     })
     
