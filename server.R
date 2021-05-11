@@ -55,20 +55,24 @@ shinyServer(function(input, output) {
 #        #"Production :"
 #        #document[(document$Site==siteVar),document$prod_a]
 #    )
+   
     
-    shp <- rgdal::readOGR("DATA/KML/03N_inn_CHAMIGNON.kml") #import
-    
-    output$map <- renderLeaflet({
-        leaflet(shp) %>%
-        addTiles() %>%
-        addPolygons(stroke = T,
-                    color = "red", weight = 2, smoothFactor = 0.5,
-                    opacity = 1.0, fillOpacity = 0.2,
-                    fillColor = "red", 
-                    highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
-                    label = ~as.character(shp$Name)
-                    )
-        })
+#THE carte
+output$map <- renderLeaflet({
+  
+  file <- paste("DATA/KML/", input$site, ".kml", sep = "") #création chemin d'accès
+  shp <- rgdal::readOGR(file) #import
+  
+  leaflet(shp) %>%
+    addTiles() %>%
+      addPolygons(stroke = T,
+                  color = "red", weight = 2, smoothFactor = 0.5,
+                  opacity = 1.0, fillOpacity = 0.2,
+                  fillColor = "red", 
+                  highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+                  label = ~as.character(shp$Name)
+      )
+})
 
        
             
