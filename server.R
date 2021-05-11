@@ -10,6 +10,9 @@
 library(shiny)
 library(png)
 library(leaflet)
+library(rgdal)
+library(stringr)
+library(rmapshaper)
 
 
 shinyServer(function(input, output) {
@@ -53,6 +56,19 @@ shinyServer(function(input, output) {
     
     output$map <- renderLeaflet(
         #code de la carte à mettre ici
+        shp <- rgdal::readOGR("DATA/KML/03N_inn_CHAMIGNON.kml") #import
+    
+  output$map <- renderLeaflet({
+      leaflet(shp) %>%
+      addTiles() %>%
+      addPolygons(stroke = T,
+                  color = "red", weight = 2, smoothFactor = 0.5,
+                  opacity = 1.0, fillOpacity = 0.2,
+                  fillColor = "red", 
+                  highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+                  label = ~as.character(shp$Name)
+      )
+    })
         
     )
         
