@@ -55,7 +55,6 @@ shinyServer(function(input, output) {
 #        #document[(document$Site==siteVar),document$prod_a]
 #    )
     
-<<<<<<< HEAD
     shp <- rgdal::readOGR("DATA/KML/03N_inn_CHAMIGNON.kml") #import
     
     output$map <- renderLeaflet({
@@ -70,29 +69,13 @@ shinyServer(function(input, output) {
                     )
         })
 
-=======
-    
-        #code de la carte à mettre ici
-        shp <- rgdal::readOGR("DATA/KML/03N_inn_CHAMIGNON.kml") #import
-    
-    output$map <- renderLeaflet({
-      leaflet(shp) %>%
-      addTiles() %>%
-      addPolygons(stroke = T,
-                  color = "red", weight = 2, smoothFactor = 0.5,
-                  opacity = 1.0, fillOpacity = 0.2,
-                  fillColor = "red", 
-                  highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
-                  label = ~as.character(shp$Name)
-      )
-    })
-        
+       
             
-    output$cultures <- renderTable(
-        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
-        assolementVar <- paste("X",as.character(dateVar),sep=""),
-        document[(document$Site==siteVar),assolementVar]
->>>>>>> f3888bdf323b18f10c4c1240945a867a0d09fea8
+#    output$cultures <- renderTable(
+#        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
+#        assolementVar <- paste("X",as.character(dateVar),sep=""),
+#        document[(document$Site==siteVar),assolementVar]
+#    )
         
 #    output$cultures <- renderTable(
 #        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
