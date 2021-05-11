@@ -17,12 +17,12 @@ library(rmapshaper)
 
 shinyServer(function(input, output) {
     
-    document <- read.csv2("PARCELLES.csv",header=TRUE, dec=".", sep=";", 
-                          skip=7, encoding = "UTF-8")
+#    document <- read.csv2("PARCELLES.csv",header=TRUE, dec=".", sep=";", 
+#                          skip=7, encoding = "UTF-8")
     
     # vraies variables a decommenter:
-    dateVar <- as.integer(input$date)
-    siteVar <- input$site
+    dateVar <- reactive(input$date)
+    siteVar <- reactive(input$site)
     
     # variables pour le test
     #dateVar <- as.integer(2018)
@@ -54,30 +54,27 @@ shinyServer(function(input, output) {
 #        #document[(document$Site==siteVar),document$prod_a]
 #    )
     
-    output$map <- renderLeaflet(
-        #code de la carte à mettre ici
-        shp <- rgdal::readOGR("DATA/KML/03N_inn_CHAMIGNON.kml") #import
+    shp <- rgdal::readOGR("DATA/KML/03N_inn_CHAMIGNON.kml") #import
     
-  output$map <- renderLeaflet({
-      leaflet(shp) %>%
-      addTiles() %>%
-      addPolygons(stroke = T,
-                  color = "red", weight = 2, smoothFactor = 0.5,
-                  opacity = 1.0, fillOpacity = 0.2,
-                  fillColor = "red", 
-                  highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
-                  label = ~as.character(shp$Name)
-      )
-    })
+    output$map <- renderLeaflet({
+        leaflet(shp) %>%
+        addTiles() %>%
+        addPolygons(stroke = T,
+                    color = "red", weight = 2, smoothFactor = 0.5,
+                    opacity = 1.0, fillOpacity = 0.2,
+                    fillColor = "red", 
+                    highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+                    label = ~as.character(shp$Name)
+                    )
+        })
+
         
-    )
-        
-    output$cultures <- renderTable(
-        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
-        assolementVar <- paste("X",as.character(dateVar),sep=""),
-        document[(document$Site==siteVar),assolementVar]
-        
-    )
+#    output$cultures <- renderTable(
+#        #Rend une table de l'ensemble des cultures pr?sentes sur le site ? la date demand?e 
+#        assolementVar <- paste("X",as.character(dateVar),sep=""),
+#        document[(document$Site==siteVar),assolementVar]
+#        
+#    )
         
 #    output$image <- renderImage(
 #        ##necessite l'installation du package png !!!
@@ -96,7 +93,7 @@ shinyServer(function(input, output) {
     
     ### PARTIE SUR LA MÉTÉO ### ESSAI AVEC UNE VALEUR FIXE POUR LE SITE AVANT DE METTRE LE SITE EN VARIABLE
     datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
-    output$météo <- renderTable({datameteo})
+    output$meteo <- renderTable({datameteo})
     ##on remplit la case de l'altitude
     output$altitude <- renderText({
         alti1 <- datameteo %>% filter(site=="63N")

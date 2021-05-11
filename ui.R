@@ -52,7 +52,7 @@ shinyUI(fluidPage(
                           ),
                  tabPanel("Meteo", 
                             fluidRow(
-                              tableOutput(outputId = "météo"),
+                              tableOutput(outputId = "meteo"),
                               # A column is defined necessarily
                               # with its argument "width"
                               #textOutput(outputId = "altitude"),
