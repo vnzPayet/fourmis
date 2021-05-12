@@ -1,26 +1,90 @@
 ---
-title: "rapport test"
-author: "L. Doucelin"
+title: "Rapport récapitulatif"
+author: "A. Champeville de Boisjolly, L. Debaecker, L. Doucelin, L. Mariat"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: html_document
 params:
-  dateVar: NA
-  siteVar: NA
+  date: NA
+  site: NA
+  type: NA
+  cultures: NA
+  assolement: NA
+  texture: NA
+  fertilite: NA
+  enjeux: NA
+  meteo: NA
+  pluie: NA
+  gel: NA
+  ensoleillement: NA
+  altitude: NA
+  SITE: NA
 ---
 
-# Parcelle choisie
-## Caractéristiques :
+Ce rapport est un récapitulatif des informations générées par l'application Shiny *Fourmies* en fonction du site agricole choisi. Il permet de conserver les données spécifiques au site en version numérique. Il est aussi possible de l'imprimer.
 
-Nom du site choisi : `params$siteVar`
+# **Caractéristiques du site choisi :**
 
-```{r}
-# The `params` object is available in the document.
-params$dateVar
-params$siteVar
+Nom du site choisi : `r params$site`
+
+```{r donnes}
+# Date choisi pour les données
+params$date
+# Caractéristique du site (référent ou innovant)
+params$type
+# Liste des cultures présentes sur le site pendant l'année sélectionnée       
+params$cultures
+# Tableau des assolements actuels et prévus
+params$assolement
+params$texture
+params$fertilite
+params$enjeux
 ```
 
-normalement ça marche 
+# **Données climatiques :**
+## Du site choisi :
 
-```{r}
+Les données climatiques suivantes sont spécifiques au site choisi. Il faut cependant prendre en compte que les parcelles d'un même site peuvent être éloignées les unes des autres et dans ce cas les données sont à nuancer. 
+```{r meteosite}
+# Site sélectionné
+params$SITE
+# Données pluviométriques du site (mm/an)
+params$pluie
+# Données de gel du site (j/an)
+params$gel
+# Données d'ensoleillement du site (h/j)
+params$ensoleillement
+# Altitude du site (m)
+params$altitude
+```
+
+## Globales :
+
+Ce tableau présente les données climatiques de tous les sites.
+
+```{r meteo}
+datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
+datameteo
+```
+
+## **Cartogrophie du site choisi :** 
+
+Cette carte présente l'organisation du site choisi. Les différentes parcelles qui composent le site sont colorées en rouge.
+```{r carte, echo=FALSE}
+#library(leaflet)
+
+#file <- paste("DATA/KML/", params$site, ".kml", sep = "") #création chemin d'accès
+#shp <- rgdal::readOGR(file) #import
+
+#leaflet(shp) %>%
+#        addTiles() %>%
+#          addPolygons(stroke = T,
+#                      color = "red", weight = 2, smoothFactor = 0.5,
+#                      opacity = 1.0, fillOpacity = 0.2,
+#                      fillColor = "red", 
+#                      highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+#                      label = ~as.character(shp$Name)
+#          )
 
 ```
+
+
