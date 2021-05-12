@@ -16,7 +16,7 @@ Nom du site choisi : `r params$site`
 Date choisie : `r params$date`
 
 ## *Type du site :*
-```{r donnes_type}
+```{r donnes_type, echo=FALSE}
 library(stringr)
 
 document <- read.csv2("DATA/PARCELLES2.csv", header=TRUE, dec=",", sep=";", 
@@ -28,7 +28,7 @@ type
 
 ## *Liste des cultures présentes sur le site en `r params$date` :*
 
-```{r donnes_cultures}
+```{r donnes_cultures, echo=FALSE}
 cultures <- document[(document$Site==str_sub(params$site,start=1,end=3))
                          &(document$SousSite==type),
                            paste("X",as.character(params$date),sep = "")]
@@ -38,7 +38,7 @@ cultures
 
 ## *Tableau des assolements actuels et prévus :*
 
-```{r donnes_assolements}
+```{r donnes_assolements, echo=FALSE}
 assolement <- document[(document$Site==str_sub(params$site,start=1,end=3))
                            &(document$SousSite==type),
                            10:18]
@@ -48,7 +48,7 @@ assolement
 
 ## *Diagramme de texture du sol :*
 
-```{r donnes_texture}
+```{r donnes_texture, echo=FALSE}
 texture <- pie(c(document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
                      8:9][1,1],
             document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
@@ -57,19 +57,18 @@ texture <- pie(c(document[(document$Site==str_sub(params$site,start=1,end=3))&(d
                          8:9][1,1]-document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
                                             8:9][1,2]),
           labels = c("argile","limons","reste"))
-texture
 ```
 
 ## *Analyse de la fertilité du sol :*
 
-```{r donnes_fertilité}
+```{r donnes_fertilité, echo=FALSE}
 fertilite <- ""
 fertilite
 ```
 
 ## *Commentaires éventuels et enjeux autour du site :*
 
-```{r donnes_enjeux}
+```{r donnes_enjeux, echo=FALSE}
 enjeux <- ""
 enjeux
 ```
