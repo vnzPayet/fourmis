@@ -51,8 +51,21 @@ datameteo
 ## **Cartogrophie du site choisi :** 
 
 Cette carte présente l'organisation du site choisi. Les différentes parcelles qui composent le site sont colorées en rouge.
+```{r carte, echo=FALSE}
+library(leaflet)
 
-```{r carte}
+file <- paste("DATA/KML/", params$site, ".kml", sep = "") #création chemin d'accès
+shp <- rgdal::readOGR(file) #import
+
+leaflet(shp) %>%
+        addTiles() %>%
+          addPolygons(stroke = T,
+                      color = "red", weight = 2, smoothFactor = 0.5,
+                      opacity = 1.0, fillOpacity = 0.2,
+                      fillColor = "red", 
+                      highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+                      label = ~as.character(shp$Name)
+          )
 
 ```
 
