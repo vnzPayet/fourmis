@@ -1,26 +1,59 @@
 ---
-title: "rapport test"
-author: "L. Doucelin"
+title: "Rapport récapitulatif"
+author: "A. Champeville de Boisjolly, L. Debaecker, L. Doucelin, L. Mariat"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: html_document
 params:
-  dateVar: NA
-  siteVar: NA
+  date: NA
+  site: NA
+  type: NA
+  cultures: NA
+  assolement: NA
+  texture: NA
+  fertilite: NA
+  enjeux: NA
+  meteo: NA
+  pluie: NA
+  gel: NA
+  ensoleillement: NA
+  altitude: NA
 ---
 
-# Parcelle choisie
-## Caractéristiques :
+Ce rapport est un récapitulatif des informations générées par l'application Shiny *Fourmies* en fonction du site agricole choisi. Il permet de conserver les données spécifiques au site en version numérique. Il est aussi possible de l'imprimer.
 
-Nom du site choisi : `params$siteVar`
+# **Caractéristiques du site choisi :**
 
-```{r}
+Nom du site choisi : `r params$site`
+
+```{r donnes}
 # The `params` object is available in the document.
-params$dateVar
-params$siteVar
+params$date
+params$site
 ```
 
-normalement ça marche 
+# **Données climatiques :**
+## Du site choisi :
 
-```{r}
+Les données climatiques suivantes sont spécifiques au site choisi. Il faut cependant prendre en compte que les parcelles d'un même site peuvent être éloignées les unes des autres et dans ce cas les données sont à nuancer. 
+```{r meteosite}
 
 ```
+
+## Globales :
+
+Ce tableau présente les données climatiques de tous les sites.
+
+```{r meteo}
+datameteo <- read.csv2(file = "DATA/CLIMAT_resume.csv", sep = ";", header = TRUE, encoding = "latin1")
+datameteo
+```
+
+## **Cartogrophie du site choisi :** 
+
+Cette carte présente l'organisation du site choisi. Les différentes parcelles qui composent le site sont colorées en rouge.
+
+```{r carte}
+
+```
+
+
