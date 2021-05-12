@@ -37,7 +37,7 @@ shinyServer(function(input, output) {
     output$assolement <- renderTable(
       cultures <- document[(document$Site==str_sub(input$site,start=1,end=3))
                            &(document$SousSite==as.character(document[(document$Site==str_sub(input$site,start=1,end=3)),2][1])),
-                           8:16]
+                           10:18]
     )
     
     
@@ -71,8 +71,16 @@ shinyServer(function(input, output) {
 #        #                 une specifique a l'exploit dans un dossier special?")
 #    )
 
-#    output$texture <- renderPlot(
-#    )
+    output$texture <- renderPlot(
+      pie(c(document[(document$Site=="03S")&(document$SousSite=="innovant"),
+                     8:9][1,1],
+            document[(document$Site=="03S")&(document$SousSite=="innovant"),
+                     8:9][1,2],
+            100-document[(document$Site=="03S")&(document$SousSite=="innovant"),
+                         8:9][1,1]-document[(document$Site=="03S")&(document$SousSite=="innovant"),
+                                            8:9][1,2]),
+          labels = c("argile","limons","reste"))
+    )
 
 #    output$fertilite <- renderPlot(
 #    )

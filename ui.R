@@ -64,6 +64,7 @@ shinyUI(fluidPage(
                           tableOutput(outputId = "cultures"),
                           "Assolement actuel :",
                           tableOutput(outputId = "assolement"),
+                          "Image de l'assolement :",
                           imageOutput("image"),
                           "Texture du sol :",
                           plotOutput("texture"),
