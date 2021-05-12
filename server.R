@@ -35,7 +35,7 @@ shinyServer(function(input, output) {
     )
     
     output$assolement <- renderTable(
-      cultures <- document[(document$Site==str_sub(input$site,start=1,end=3))
+      assolement <- document[(document$Site==str_sub(input$site,start=1,end=3))
                            &(document$SousSite==as.character(document[(document$Site==str_sub(input$site,start=1,end=3)),2][1])),
                            10:18]
     )
@@ -72,12 +72,12 @@ shinyServer(function(input, output) {
 #    )
 
     output$texture <- renderPlot(
-      pie(c(document[(document$Site=="03S")&(document$SousSite=="innovant"),
+      pie(c(document[(document$Site==str_sub(input$site,start=1,end=3))&(document$SousSite=="innovant"),
                      8:9][1,1],
-            document[(document$Site=="03S")&(document$SousSite=="innovant"),
+            document[(document$Site==str_sub(input$site,start=1,end=3))&(document$SousSite=="innovant"),
                      8:9][1,2],
-            100-document[(document$Site=="03S")&(document$SousSite=="innovant"),
-                         8:9][1,1]-document[(document$Site=="03S")&(document$SousSite=="innovant"),
+            100-document[(document$Site==str_sub(input$site,start=1,end=3))&(document$SousSite=="innovant"),
+                         8:9][1,1]-document[(document$Site==str_sub(input$site,start=1,end=3))&(document$SousSite=="innovant"),
                                             8:9][1,2]),
           labels = c("argile","limons","reste"))
     )

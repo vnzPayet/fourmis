@@ -4,20 +4,8 @@ author: "A. Champeville de Boisjolly, L. Debaecker, L. Doucelin, L. Mariat"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: html_document
 params:
-  date: NA
-  site: NA
-  type: NA
-  cultures: NA
-  assolement: NA
-  texture: NA
-  fertilite: NA
-  enjeux: NA
-  meteo: NA
-  pluie: NA
-  gel: NA
-  ensoleillement: NA
-  altitude: NA
-  SITE: NA
+  date: 2020
+  site: "03N_inn_CHAMIGNON"
 ---
 
 Ce rapport est un récapitulatif des informations générées par l'application Shiny *Fourmies* en fonction du site agricole choisi. Il permet de conserver les données spécifiques au site en version numérique. Il est aussi possible de l'imprimer.
@@ -25,20 +13,67 @@ Ce rapport est un récapitulatif des informations générées par l'application 
 # **Caractéristiques du site choisi :**
 
 Nom du site choisi : `r params$site`
+Date choisie : `r params$date`
 
-```{r donnes}
-# Date choisi pour les données
-params$date
-# Caractéristique du site (référent ou innovant)
-params$type
-# Liste des cultures présentes sur le site pendant l'année sélectionnée       
-params$cultures
-# Tableau des assolements actuels et prévus
-params$assolement
-params$texture
-params$fertilite
-params$enjeux
+## *Type du site :*
+```{r donnes_type}
+library(stringr)
+
+document <- read.csv2("DATA/PARCELLES2.csv", header=TRUE, dec=",", sep=";", 
+                         encoding = "latin1")
+type <- as.character(document[(document$Site==str_sub(params$site,start=1,end=3)),2][1])
+type
 ```
+
+
+## *Liste des cultures présentes sur le site en `r params$date` :*
+
+```{r donnes_cultures}
+cultures <- document[(document$Site==str_sub(params$site,start=1,end=3))
+                         &(document$SousSite==type),
+                           paste("X",as.character(params$date),sep = "")]
+cultures
+```
+
+
+## *Tableau des assolements actuels et prévus :*
+
+```{r donnes_assolements}
+assolement <- document[(document$Site==str_sub(params$site,start=1,end=3))
+                           &(document$SousSite==type),
+                           10:18]
+assolement
+```
+
+
+## *Diagramme de texture du sol :*
+
+```{r donnes_texture}
+texture <- pie(c(document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
+                     8:9][1,1],
+            document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
+                     8:9][1,2],
+            100-document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
+                         8:9][1,1]-document[(document$Site==str_sub(params$site,start=1,end=3))&(document$SousSite==type),
+                                            8:9][1,2]),
+          labels = c("argile","limons","reste"))
+texture
+```
+
+## *Analyse de la fertilité du sol :*
+
+```{r donnes_fertilité}
+fertilite <- ""
+fertilite
+```
+
+## *Commentaires éventuels et enjeux autour du site :*
+
+```{r donnes_enjeux}
+enjeux <- ""
+enjeux
+```
+
 
 # **Données climatiques :**
 ## Du site choisi :
