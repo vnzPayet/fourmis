@@ -4,13 +4,8 @@ author: "A. Champeville de Boisjolly, L. Debaecker, L. Doucelin, L. Mariat"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: html_document
 params:
-<<<<<<< HEAD
-  date: 2020
-  site: "03N_inn_CHAMIGNON"
-=======
   date: NA
   site: NA
->>>>>>> a8c32eb311d4a879bc7ff532052f3ccaed3d4fce
 ---
 
 Ce rapport est un récapitulatif des informations générées par l'application Shiny *Fourmies* en fonction du site agricole choisi. Il permet de conserver les données spécifiques au site en version numérique. Il est aussi possible de l'imprimer.
