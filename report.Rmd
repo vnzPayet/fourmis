@@ -17,6 +17,7 @@ params:
   gel: NA
   ensoleillement: NA
   altitude: NA
+  SITE: NA
 ---
 
 Ce rapport est un récapitulatif des informations générées par l'application Shiny *Fourmies* en fonction du site agricole choisi. Il permet de conserver les données spécifiques au site en version numérique. Il est aussi possible de l'imprimer.
@@ -26,9 +27,17 @@ Ce rapport est un récapitulatif des informations générées par l'application 
 Nom du site choisi : `r params$site`
 
 ```{r donnes}
-# The `params` object is available in the document.
+# Date choisi pour les données
 params$date
-params$site
+# Caractéristique du site (référent ou innovant)
+params$type
+# Liste des cultures présentes sur le site pendant l'année sélectionnée       
+params$cultures
+# Tableau des assolements actuels et prévus
+params$assolement
+params$texture
+params$fertilite
+params$enjeux
 ```
 
 # **Données climatiques :**
@@ -36,7 +45,16 @@ params$site
 
 Les données climatiques suivantes sont spécifiques au site choisi. Il faut cependant prendre en compte que les parcelles d'un même site peuvent être éloignées les unes des autres et dans ce cas les données sont à nuancer. 
 ```{r meteosite}
-
+# Site sélectionné
+params$SITE
+# Données pluviométriques du site (mm/an)
+params$pluie
+# Données de gel du site (j/an)
+params$gel
+# Données d'ensoleillement du site (h/j)
+params$ensoleillement
+# Altitude du site (m)
+params$altitude
 ```
 
 ## Globales :
@@ -52,20 +70,20 @@ datameteo
 
 Cette carte présente l'organisation du site choisi. Les différentes parcelles qui composent le site sont colorées en rouge.
 ```{r carte, echo=FALSE}
-library(leaflet)
+#library(leaflet)
 
-file <- paste("DATA/KML/", params$site, ".kml", sep = "") #création chemin d'accès
-shp <- rgdal::readOGR(file) #import
+#file <- paste("DATA/KML/", params$site, ".kml", sep = "") #création chemin d'accès
+#shp <- rgdal::readOGR(file) #import
 
-leaflet(shp) %>%
-        addTiles() %>%
-          addPolygons(stroke = T,
-                      color = "red", weight = 2, smoothFactor = 0.5,
-                      opacity = 1.0, fillOpacity = 0.2,
-                      fillColor = "red", 
-                      highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
-                      label = ~as.character(shp$Name)
-          )
+#leaflet(shp) %>%
+#        addTiles() %>%
+#          addPolygons(stroke = T,
+#                      color = "red", weight = 2, smoothFactor = 0.5,
+#                      opacity = 1.0, fillOpacity = 0.2,
+#                      fillColor = "red", 
+#                      highlightOptions = highlightOptions(color = "white", weight = 2, bringToFront = TRUE),
+#                      label = ~as.character(shp$Name)
+#          )
 
 ```
 
